@@ -1,6 +1,7 @@
 import uuid
 from typing import Dict, Any
 from .research_agent import ResearchIntelligenceAgent
+from .financial_analysis_agent import FinancialAnalysisAgent
 from ..models.state import ConversationState
 
 class OrchestrationAgent:
@@ -13,7 +14,8 @@ class OrchestrationAgent:
         Initializes the orchestrator, its specialist agents, and the conversation state.
         """
         self.specialist_agents = {
-            "research": ResearchIntelligenceAgent()
+            "research": ResearchIntelligenceAgent(),
+            "financial_analysis": FinancialAnalysisAgent(),
         }
         # Initialize the state for this session
         self.state = ConversationState(
@@ -21,7 +23,7 @@ class OrchestrationAgent:
             user_id=user_id
         )
         print(f"OrchestrationAgent initialized for user '{user_id}'. Session ID: {self.state.session_id}")
-        print("Specialists loaded: research")
+        print("Specialists loaded: research, financial_analysis")
 
 
     def _classify_intent(self, user_query: str) -> str:
@@ -29,8 +31,12 @@ class OrchestrationAgent:
         Classifies user intent based on keywords from the design spec.
         """
         query = user_query.lower()
-        research_keywords = ["research", "market", "competitor", "industry", "trend", "news", "landscape", "recommendation"]
 
+        financial_keywords = ["model", "valuation", "dcf", "projections", "forecast", "scenario", "sensitivity"]
+        if any(keyword in query for keyword in financial_keywords):
+            return "financial_analysis"
+
+        research_keywords = ["research", "market", "competitor", "industry", "trend", "news", "landscape", "recommendation"]
         if any(keyword in query for keyword in research_keywords):
             return "research"
 

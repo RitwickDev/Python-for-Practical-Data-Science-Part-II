@@ -38,3 +38,11 @@ def test_escalation_flow_for_recommendation_query(orchestrator):
 
     # Check that the agent's internal state reflects the escalation
     assert orchestrator.state.escalation_required is True
+
+def test_intent_classification_financial(orchestrator):
+    """
+    Tests that queries with financial analysis keywords are correctly classified.
+    """
+    financial_query = "Build a valuation model for our client."
+    intent = orchestrator._classify_intent(financial_query)
+    assert intent == "financial_analysis"

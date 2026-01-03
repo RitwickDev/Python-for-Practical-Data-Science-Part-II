@@ -18,6 +18,17 @@ def web_search(query: str):
         ]
     return []
 
+def comparable_data_api(company: str):
+    """Mock API for retrieving comparable company valuation data."""
+    print(f"--- MOCK API: comparable_data_api(company='{company}') ---")
+    # In a real scenario, this would query a database like CapIQ or Bloomberg.
+    # The data is hardcoded for this demo.
+    return [
+        {"name": "PeerCo A", "ev_revenue_multiple": 8.5, "ev_ebitda_multiple": 14.2},
+        {"name": "PeerCo B", "ev_revenue_multiple": 9.2, "ev_ebitda_multiple": 15.1},
+        {"name": "PeerCo C", "ev_revenue_multiple": 7.8, "ev_ebitda_multiple": 13.5},
+    ]
+
 def financial_database_query(company: str):
     """Mock financial database API."""
     print(f"--- MOCK API: financial_database_query(company='{company}') ---")
