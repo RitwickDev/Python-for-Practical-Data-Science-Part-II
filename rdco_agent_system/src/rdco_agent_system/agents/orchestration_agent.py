@@ -29,7 +29,7 @@ class OrchestrationAgent:
         Classifies user intent based on keywords from the design spec.
         """
         query = user_query.lower()
-        research_keywords = ["research", "market", "competitor", "industry", "trend", "news", "landscape"]
+        research_keywords = ["research", "market", "competitor", "industry", "trend", "news", "landscape", "recommendation"]
 
         if any(keyword in query for keyword in research_keywords):
             return "research"

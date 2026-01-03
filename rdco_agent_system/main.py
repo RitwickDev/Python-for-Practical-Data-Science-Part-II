@@ -28,8 +28,9 @@ def main():
             print("\n[RD&Co Agent System]>")
             print(response)
 
-        except KeyboardInterrupt:
-            print("\n\nInterrupted by user. Terminating...")
+        except (KeyboardInterrupt, EOFError):
+            # Handles Ctrl+C (KeyboardInterrupt) and piped input (EOFError)
+            print("\n\nInput stream closed or interrupted. Terminating...")
             break
         except Exception as e:
             print(f"\nAn unexpected error occurred: {e}")
