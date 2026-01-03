@@ -1,11 +1,6 @@
-import sys
-import os
 import pytest
 
-# Add project root to the Python path to allow imports from src
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-
-from rdco_agent_system.src.agents.orchestration_agent import OrchestrationAgent
+from rdco_agent_system.agents.orchestration_agent import OrchestrationAgent
 
 @pytest.fixture
 def orchestrator():

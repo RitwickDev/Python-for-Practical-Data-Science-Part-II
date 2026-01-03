@@ -1,12 +1,4 @@
-import sys
-import os
-
-# This is a common pattern to make imports work when running a script
-# from the project root, without having to install the project as a package.
-# It adds the directory of the script (i.e., the project root) to the Python path.
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
-
-from src.agents.orchestration_agent import OrchestrationAgent
+from rdco_agent_system.agents.orchestration_agent import OrchestrationAgent
 
 def main():
     """
